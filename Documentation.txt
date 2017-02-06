@@ -73,7 +73,7 @@ Section: Map Functions
   6. getRegion(self, x, y, xx, yy)
    : Returns a table of the map at the regions from x, y ended at xx, yy
   
-Section: Pixel Functions
+Section: Pixel Functions (Structured - {"TBc",solid=true or false} (T = Text Color, B = Back Color, c = Char)
   1. setSolid(self, x, y, s)
    : Sets the pixel at x, y to be solid from the boolean of s
   2. getSolid(self, x, y)
@@ -109,19 +109,19 @@ Section: Transparent Pixel Functions (Structured - "TBcS" (T = Text Color, B = B
 4. setTPixelSolid(self,x,y,s)
    : Sets the tpixel and x, y to be solid depending on s
 5. setTPixel(self,x,y,pix,s)
-   :
-6. setTPixelRelative(self,x,y,pix)
-   :
+   : Sets a tpixel at x, y to pix and solid, s
+6. setTPixelRelative(self,x,y,pix,s)
+   : Sets a TPixel at x and y + view offsets 
 7. drawTPixel(self,x,y)
-   :
+   :Draws a TPixel from x, y
 8. clearTPixel(self,x,y)
-   :
+   :Clears a tpixel and undraws it
 9. moveTPixel(self,fx,fy,ax,ay)  
-   :
+   : Moves a TPixel from fx, fy, to ax, ay
 10. setTPixelPos(self,fx,fy,tx,ty)
-   :
+   : Sets a TPixel from fx, fy to tx, ty
 
-Section: Misc Functions
+Section: Entity Functions
 1. 
 2. 
 3. 
@@ -133,7 +133,31 @@ Section: Misc Functions
 9. 
 10. 
 
-Section: Misc Functions
+Section: Hud Functions
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+
+Section: Render Functions
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+
+Section: Dialog Functions
 1. 
 2. 
 3. 
