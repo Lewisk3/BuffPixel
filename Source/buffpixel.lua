@@ -67,18 +67,18 @@ if(not term.current().setVisible)then
 	end
 end
 
-function new(w,h,nx,ny,nw,nh)
+function new(mw,mh,nx,ny,nw,nh)
 	local nmap = {}
-	for y = 1, math.ceil(h) do
+	for y = 1, math.ceil(mh) do
 		nmap[y] = {}
-		for x = 1, math.ceil(w) do
+		for x = 1, math.ceil(mw) do
 			nmap[y][x] = {}
 		end
 	end
 	local ntmap = {}
-	for y = 1, math.ceil(h) do
+	for y = 1, math.ceil(mh) do
 		ntmap[y] = {}
-		for x = 1, math.ceil(w) do
+		for x = 1, math.ceil(mw) do
 			ntmap[y][x] = ""
 		end
 	end
@@ -113,6 +113,8 @@ local mutils = {
 			local gmap = textutils.unserialize(f.readAll())
 			if(type(gmap) == "table")then self.map = gmap else error("importMap: Map invalid or corrupt. ") end
 			f.close()
+			self:resetTMap()
+			self:initBuffer()
 		else
 			error("importMap: File doesnt exist: " .. file)		
 		end
@@ -217,7 +219,7 @@ local mutils = {
 	end,
 
 	-- Map utils
-	fillMap = function(self,pix,s)
+	fillMap = function(self,pix)
 		for y = 1, #self.map do
 			for x = 1, #self.map[y] do
 				self:setPixel(x,y,pix,s)
@@ -263,7 +265,10 @@ local mutils = {
 	end,
 
 	-- Pixel utils
-	setSolid = function(self,x,y)
+	setSolid = function(self,x,y,s)
+		self.map[y][x].solid = s
+	end,
+	getSolid = function(self,x,y)
 		return self.map[y][x].solid
 	end,
 	getPixel = function(self,x,y)
@@ -296,7 +301,7 @@ local mutils = {
 	getPixelAttribute = function(self,x,y,attrib)
 		return self.map[y][x][attrib]
 	end,
-	setPixelAttribute = function(self,attrib,eq)
+	setPixelAttribute = function(self,x,y,attrib,eq)
 		self.map[y][x][attrib] = eq
 	end,
 	drawMapPixel = function(self,x,y)
@@ -339,6 +344,14 @@ local mutils = {
 	end,
 
 	-- Transparent Pixel utils
+	resetTMap = function(self)
+		for y = 1, #map do
+			ntmap[y] = {}
+			for x = 1, #map[y] do
+				ntmap[y][x] = ""
+			end
+		end
+	end,
 	getTPixel = function(self,x,y)
 		return self.tmap[y][x]
 	end,
@@ -363,8 +376,8 @@ local mutils = {
 		self:checkHudRedraw((x - self.viewx) + self.roffx,(y - self.viewy) + self.roffy)
 	end,
 
-	setTPixelRelative = function(self,x,y,pix)
-		self:setTPixel(x + self.viewx - self.roffx, y + self.viewy - self.roffy, pix)
+	setTPixelRelative = function(self,x,y,pix,s)
+		self:setTPixel(x + self.viewx - self.roffx, y + self.viewy - self.roffy, pix,s)
 	end,
 	drawTPixel = function(self,x,y)
 		local cpix = self:getTPixel(x,y)
