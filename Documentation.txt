@@ -1,0 +1,86 @@
+Starting from the top and ending at the bottom functions this documentation with explain what each function does.
+
+1. checkUpdate( apiloc ) 
+   : This checks for an update given the location of the BuffPixel api ( apiloc = api location)
+   : Returns - update if the file was updated, noconnection if connection to pastebin failed nohttp if http is disabled
+   : and noupdate if no update is available.
+   
+2. new(mw, mh, width, height, x, y)
+   : Creates 2 maps of sizes mw, mh. tmap and map. tmap is mainly used to entities and npc's
+   : Returns buffered game table with view sizes of width, height and with render offsets at x, y
+   
+|----------------------------------------------------------------------------------------------------------------|
+|                                         Buffered game functions                                                |
+|----------------------------------------------------------------------------------------------------------------|
+
+Section: Map Renderer Functions
+  1. importMap(self, file)
+    : imports a game map from the file. 
+    : Also resets the transparent pixel map.
+    : Also resets the buffer.
+  2. setRenderOffset(self, x, y)
+    : Sets render offsets to x and y
+    : render offsets are used to tell the api where to render the games window on the screen, starting at x and y
+  3. getWidth(self)
+    : returns view width
+  4. getHeight(self)
+    : returns view height
+  5. getViews(self)
+    : returns x, y views
+  6. getRenderOffsets(self)
+    : returns x, y render offsets
+  
+Section: Buffer/Camera Functions
+  1. initBuffer(self)
+    : Clears the buffer at the size of the view width and height
+  2. fillBuffer(self, pix)
+    : Fills the buffer with the pix (pixel)
+  3. setBufferPixel(self, x, y, pix)
+    : Sets the pixel at the buffers x, y to pix
+  4. isBuffsize(self, x, y)
+    : Checks if the x, y is within the boundarys of the buffers size
+    : Great for checking if an object is outside the view
+  5. checkViews(self)
+    : If the views are outside the boundary of the map then sets then to the boundarys
+    : Returns true if the views were not capped and false if they were.
+  6. setBuffer(self, buff)
+    : Sets the buffer to, buff
+  7. clearBuffer(self)
+    : Clears the entire buffer, sets it to an empty table
+    : self.buffer = {}
+  8. getOutsideViews(self, x, y, xd, yd)
+    : Returns an x and y value of 1 or -1 which is the direction the views would need to move to keep the object at x, y in view
+    : The x and y values are added to with xd, yd (Useful for getting the values a bit before the object will exit the view)
+  9. isOutsideView(self, x, y)
+    : Returns true of false if the object at x and y is outside the screen view
+  10. isOutsideViewRelative(self, x, y)
+    : Returns true or false if the x and y is outside the views
+    : If the x and y at the position would NOT be in view then return true
+  
+Section: Map Functions
+  1. fillMap(self, pix)
+    : Fills the map with pixel (pix)
+  2. clearMap(self)
+    : Clears EACH position on the map to {}
+    : Does NOT clear the map with self.map = {}
+  3. setMapRegion(self, sx, sy, regiontable)
+    : Sets the map starting at sx and sy to the map at regiontable
+    : Region table can contain a smaller map and it will set that map to the current map starting at the sx, sy positions
+  4. setMap(self, map)
+   : Sets the map to, map
+  5. getMap
+   : Returns the map
+  6. getRegion(self, x, y, xx, yy)
+   : Returns a table of the map at the regions from x, y ended at xx, yy
+  
+Section: Map Functions
+  1.
+  2.
+  3.
+  4.
+  5.
+  6.
+  7.
+  8.
+  9.
+  10.
