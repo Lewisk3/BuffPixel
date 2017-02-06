@@ -1,3 +1,4 @@
+-- Description
 os.loadAPI("buffpixel")
 write("Enter Window Width: ")
 local win_width = tonumber(read())
