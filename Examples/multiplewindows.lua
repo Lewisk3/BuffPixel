@@ -1,3 +1,4 @@
+-- Use this top line to make changes - 1
 os.loadAPI("buffpixel")
 local w, h = term.getSize()
 term.clear()
