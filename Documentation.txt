@@ -73,14 +73,74 @@ Section: Map Functions
   6. getRegion(self, x, y, xx, yy)
    : Returns a table of the map at the regions from x, y ended at xx, yy
   
-Section: Map Functions
-  1.
-  2.
-  3.
-  4.
-  5.
-  6.
-  7.
-  8.
-  9.
-  10.
+Section: Pixel Functions
+  1. setSolid(self, x, y, s)
+   : Sets the pixel at x, y to be solid from the boolean of s
+  2. getSolid(self, x, y)
+   : Returns if the pixel at x, y is solid
+  3. getPixel(self,x,y)
+   : Return the pixels graphical data at x, y
+  4. drawPixel(self,x,y,cpix)
+   : Draws a pixel at x, y with the graphic of cpix
+  5. getPixelRaw(self,x,y)
+   : Returns the entire pixel at x, y
+  6. getPixelAttribute(self,x,y,attrib)
+   : Returns a pixels attribute (pixel[attrib])
+  7. setPixelAttribute(self,x,y,attrib,eq)
+   : Sets a pixels attribute at x, y to attrib and to equal, eq
+  8. drawMapPixel(self,x,y)
+   : Draws a pixel on the map from x, y
+  9. drawMapPixelAt(self,x,y,dx,dy)
+   : Draws a pixel on the map at x, y and on the screen at dx, dy
+  10. setPixel(self,x,y,pix)
+   : Sets the pixel on the map at x, y to pix
+  11. checkPixelDistance(self, fx, fy, tx, ty)
+   : Returns the distance between points fx, fy, tx, ty (Integeral)
+  12. setPixelRelative(self,x,y,pix)
+   : Sets a pixel at x, y plus the view offsets to pix
+
+Section: Transparent Pixel Functions (Structured - "TBcS" (T = Text Color, B = Back Color, c = Char, S = 0 or 1 - Solid)
+1. resetTMap(self)
+   : Resets tmap to the size of the map
+2. getTPixel(self,x,y)
+   : Returns the TPixel at x, y
+3. isTPixelSolid(self,x,y)
+   : Returns if a TPixel at x,y is solid
+4. setTPixelSolid(self,x,y,s)
+   : Sets the tpixel and x, y to be solid depending on s
+5. setTPixel(self,x,y,pix,s)
+   :
+6. setTPixelRelative(self,x,y,pix)
+   :
+7. drawTPixel(self,x,y)
+   :
+8. clearTPixel(self,x,y)
+   :
+9. moveTPixel(self,fx,fy,ax,ay)  
+   :
+10. setTPixelPos(self,fx,fy,tx,ty)
+   :
+
+Section: Misc Functions
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
+
+Section: Misc Functions
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
