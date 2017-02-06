@@ -1,3 +1,4 @@
+
 Starting from the top and ending at the bottom functions this documentation with explain what each function does.
 
 1. checkUpdate( apiloc ) 
